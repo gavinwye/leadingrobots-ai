@@ -1,0 +1,149 @@
+---
+const BUTTONDOWN_USERNAME = 'BUTTONDOWN_USERNAME';
+const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`;
+---
+<div class="newsletter-form-wrapper">
+  <form
+    id="newsletter-form"
+    action={ACTION_URL}
+    method="post"
+    novalidate
+  >
+    <label for="email-input" class="sr-only">Email address</label>
+    <div class="form-row">
+      <input
+        id="email-input"
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        required
+        autocomplete="email"
+      />
+      <button type="submit">Stay in the loop</button>
+    </div>
+    <p id="form-error" class="form-message form-error" aria-live="polite" hidden>
+      Something went wrong — try again or email me directly.
+    </p>
+    <p id="form-success" class="form-message form-success" aria-live="polite" hidden>
+      You're in. I'll be in touch.
+    </p>
+  </form>
+</div>
+
+<style>
+  .newsletter-form-wrapper {
+    margin-top: 2rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  input[type="email"] {
+    flex: 1 1 200px;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  input[type="email"]:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  button[type="submit"] {
+    padding: 0.7rem 1.4rem;
+    background: var(--rust);
+    color: var(--white);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  button[type="submit"]:hover {
+    opacity: 0.85;
+  }
+
+  button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-message {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .form-error {
+    color: #ff9580;
+  }
+
+  .form-success {
+    color: #a8e6b0;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const errorMsg = document.getElementById('form-error') as HTMLElement;
+  const successMsg = document.getElementById('form-success') as HTMLElement;
+  const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.hidden = true;
+    successMsg.hidden = true;
+    submitBtn.disabled = true;
+
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const data = new URLSearchParams();
+    data.set('email', email);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString(),
+      });
+
+      if (response.ok || response.status === 201) {
+        successMsg.hidden = false;
+        form.reset();
+      } else {
+        errorMsg.hidden = false;
+      }
+    } catch {
+      errorMsg.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,115 @@
+---
+import NewsletterForm from './NewsletterForm.astro';
+---
+<section class="hero">
+  <div class="hero__left">
+    <div class="hero__left-content">
+      <p class="hero__eyebrow">Forthcoming book</p>
+      <h1 class="hero__title">Leading<br />Robots</h1>
+      <p class="hero__subtitle-book">The AI Organisation</p>
+      <p class="hero__description">
+        Your job is going to change. This is a guide for thinking through what that means — for you, your skills, and the people you work with.
+      </p>
+      <NewsletterForm />
+    </div>
+  </div>
+  <div class="hero__right">
+    <img
+      src="/images/book-cover-placeholder.svg"
+      alt="Leading Robots: The AI Organisation — book cover placeholder"
+      class="hero__cover"
+      width="300"
+      height="450"
+    />
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+  }
+
+  .hero__left {
+    background: var(--charcoal);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: clamp(2rem, 5vw, 4rem);
+  }
+
+  .hero__left-content {
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-grey);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__title {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    margin-bottom: 0.5rem;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__subtitle-book {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--rust);
+    font-style: italic;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0;
+    max-width: 40ch;
+  }
+
+  .hero__right {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 3rem;
+  }
+
+  .hero__cover {
+    max-height: 50vh;
+    width: auto;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: unset;
+    }
+
+    .hero__left {
+      padding: 3rem 1.75rem 2.5rem;
+    }
+
+    .hero__right {
+      padding: 2.5rem 2rem;
+      min-height: 55vw;
+    }
+
+    .hero__cover {
+      max-height: 45vw;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+const cards = [
+  {
+    label: '01',
+    heading: 'The editorial problem',
+    body: 'When AI does the work, humans become reviewers. Most organisations aren\'t designed for that shift.',
+  },
+  {
+    label: '02',
+    heading: 'The apprenticeship gap',
+    body: 'Junior roles are disappearing. How do people develop expertise when AI handles execution?',
+  },
+  {
+    label: '03',
+    heading: 'The accountability question',
+    body: 'Democratic legitimacy depends on humans being responsible for decisions. AI makes that harder to maintain.',
+  },
+];
+---
+<section class="tensions">
+  <div class="tensions__grid">
+    {cards.map(card => (
+      <article class="tension-card">
+        <span class="tension-card__label">{card.label}</span>
+        <h2 class="tension-card__heading">{card.heading}</h2>
+        <p class="tension-card__body">{card.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tensions {
+    background: var(--parchment);
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.75rem, 5vw, 4rem);
+  }
+
+  .tensions__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+
+  .tension-card {
+    padding: 2rem 0;
+    border-top: 2px solid var(--rust);
+  }
+
+  .tension-card__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .tension-card__heading {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    margin-bottom: 0.85rem;
+    color: var(--charcoal);
+    font-weight: 700;
+  }
+
+  .tension-card__body {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    opacity: 0.7;
+    margin: 0;
+    line-height: 1.7;
+  }
+</style>

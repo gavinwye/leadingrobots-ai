@@ -1,0 +1,46 @@
+<svg width="300" height="450" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book spine shadow -->
+  <rect width="300" height="450" rx="3" fill="#1C1C1C"/>
+  <!-- Book front cover -->
+  <rect x="8" y="0" width="292" height="450" rx="2" fill="#242424"/>
+  <!-- Subtle texture lines -->
+  <rect x="8" y="0" width="292" height="1" fill="rgba(255,255,255,0.05)"/>
+  <rect x="8" y="449" width="292" height="1" fill="rgba(0,0,0,0.3)"/>
+  <!-- Rust accent bar at top -->
+  <rect x="8" y="0" width="292" height="4" rx="2" fill="#B5451B"/>
+
+  <!-- Robot emoji -->
+  <!-- Title area -->
+  <text
+    x="154"
+    y="180"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    font-weight="700"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    letter-spacing="-0.5"
+  >Leading</text>
+  <text
+    x="154"
+    y="228"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    font-weight="700"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    letter-spacing="-0.5"
+  >Robots</text>
+  <!-- Divider -->
+  <rect x="80" y="248" width="140" height="1" fill="#B5451B"/>
+  <!-- Subtitle -->
+  <text
+    x="154"
+    y="278"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="13"
+    fill="#B5451B"
+    text-anchor="middle"
+    letter-spacing="1"
+  >THE AI ORGANISATION</text>
+</svg>
