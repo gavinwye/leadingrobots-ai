@@ -9,7 +9,7 @@ import NewsletterForm from './NewsletterForm.astro';
       <h1 class="hero__title">Leading<br />Robots</h1>
       <p class="hero__subtitle-book">The AI Organisation</p>
       <p class="hero__description">
-        Your job is going to change. This is a guide for thinking through what that means — for you, your skills, and the people you work with.
+        Your job is going to change. This is a guide for thinking through what that means for you, your skills, and the people you work with.
       </p>
       <NewsletterForm />
     </div>
@@ -17,7 +17,7 @@ import NewsletterForm from './NewsletterForm.astro';
   <div class="hero__right">
     <div class="cover" role="img" aria-label="Book cover: Leading Robots, The AI Organisation (placeholder)">
       <div class="cover__bar"></div>
-      <p class="cover__eyebrow eyebrow">A book</p>
+      <div class="cover__gap"></div>
       <p class="cover__title">Leading<br />Robots</p>
       <p class="cover__sub">The AI Organisation</p>
       <p class="cover__author">Gavin Wye</p>
@@ -96,9 +96,8 @@ import NewsletterForm from './NewsletterForm.astro';
     margin: 0 -28px 28px -36px;
   }
 
-  .cover__eyebrow {
-    font-size: 0.85rem;
-    margin-bottom: auto;
+  .cover__gap {
+    flex: 1;
   }
 
   .cover__title {
