@@ -15,13 +15,13 @@ import NewsletterForm from './NewsletterForm.astro';
     </div>
   </div>
   <div class="hero__right">
-    <img
-      src="/images/book-cover-placeholder.svg"
-      alt="Leading Robots: The AI Organisation — book cover placeholder"
-      class="hero__cover"
-      width="300"
-      height="450"
-    />
+    <div class="cover" role="img" aria-label="Book cover: Leading Robots, The AI Organisation (placeholder)">
+      <div class="cover__bar"></div>
+      <p class="cover__eyebrow eyebrow">A book</p>
+      <p class="cover__title">Leading<br />Robots</p>
+      <p class="cover__sub">The AI Organisation</p>
+      <p class="cover__author">Gavin Wye</p>
+    </div>
   </div>
   </div>
 </section>
@@ -75,19 +75,55 @@ import NewsletterForm from './NewsletterForm.astro';
     justify-content: center;
   }
 
-  .hero__cover {
-    max-height: 50vh;
-    width: auto;
+  .cover {
+    width: min(100%, 300px);
+    aspect-ratio: 2 / 3;
+    background: var(--paper);
+    border: 1px solid var(--line);
     border-radius: 4px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 8px 0 0 rgba(0, 0, 0, 0.06), 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 0 28px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    color: var(--charcoal);
+  }
+
+  .cover__bar {
+    height: 8px;
+    background: var(--accent);
+    margin: 0 -28px 28px -36px;
+  }
+
+  .cover__eyebrow {
+    font-size: 0.85rem;
+    margin-bottom: auto;
+  }
+
+  .cover__title {
+    font: 700 3.4rem/1 var(--font-head);
+    margin-bottom: 0.6rem;
+  }
+
+  .cover__sub {
+    font: 700 1.5rem/1.05 var(--font-head);
+    color: var(--accent-text);
+    margin-bottom: 2.2rem;
+  }
+
+  .cover__author {
+    font: 500 1rem/1 var(--font-body);
+    color: var(--body-grey);
+    margin: 0;
   }
 
   @media (max-width: 760px) {
     .hero__inner {
       grid-template-columns: minmax(0, 1fr);
     }
-    .hero__cover {
-      max-height: 60vw;
+    .cover {
+      width: min(100%, 240px);
     }
   }
 </style>
