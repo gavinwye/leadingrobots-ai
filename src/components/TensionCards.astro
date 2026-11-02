@@ -31,45 +31,42 @@ const cards = [
 
 <style>
   .tensions {
-    background: var(--parchment);
-    padding: clamp(3rem, 8vw, 6rem) clamp(1.75rem, 5vw, 4rem);
+    background: var(--paper);
+    padding: clamp(3rem, 8vw, 5rem) var(--gutter);
   }
 
   .tensions__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 20px;
     max-width: var(--site-max-width);
     margin: 0 auto;
   }
 
   .tension-card {
-    padding: 2rem 0;
-    border-top: 2px solid var(--rust);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    min-width: 0;
   }
 
   .tension-card__label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--rust);
-    letter-spacing: 0.1em;
+    font: 700 1.1rem/1 var(--font-head);
+    letter-spacing: 0.12em;
+    color: var(--accent-text);
     display: block;
     margin-bottom: 1rem;
   }
 
   .tension-card__heading {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    margin-bottom: 0.85rem;
-    color: var(--charcoal);
-    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 0.6rem;
   }
 
   .tension-card__body {
-    font-size: 0.95rem;
-    color: var(--charcoal);
-    opacity: 0.7;
+    font-size: 1.1rem;
+    color: var(--body-grey);
     margin: 0;
-    line-height: 1.7;
   }
 </style>
