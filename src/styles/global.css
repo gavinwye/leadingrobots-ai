@@ -14,9 +14,6 @@
   --on-accent: #ffffff;
   --accent-text: #2e3bff;
 
-  /* Day gradient, set from the weekday in Europe/Paris (see Hero.astro). Monday until the script runs. */
-  --m0: #00a8ff; --m1: #2e3bff; --m2: #8300ff; --m3: #bc00ff; --m4: #e600de; --m5: #ff08a1;
-
   --font-head: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif;
   --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
 

@@ -2,7 +2,6 @@
 import NewsletterForm from './NewsletterForm.astro';
 ---
 <section class="hero">
-  <div class="mesh" id="hero-mesh" aria-hidden="true"></div>
   <div class="hero__inner">
   <div class="hero__left">
     <div class="hero__left-content">
@@ -27,66 +26,12 @@ import NewsletterForm from './NewsletterForm.astro';
   </div>
 </section>
 
-<script is:inline>
-  // brnd.gvn.sh gradient: one mesh per weekday in Europe/Paris, six accents top to bottom.
-  (function () {
-    var HEX = { sky: '#00a8ff', blue: '#2e3bff', violet: '#8300ff', purple: '#bc00ff', magenta: '#e600de', pink: '#ff08a1', red: '#ff3852', orange: '#ff5a19', amber: '#ff8300', yellow: '#ffc400' };
-    var DAYS = {
-      Monday: ['sky', 'blue', 'violet', 'purple', 'magenta', 'pink'],
-      Tuesday: ['blue', 'violet', 'purple', 'magenta', 'pink', 'red'],
-      Wednesday: ['violet', 'purple', 'magenta', 'pink', 'red', 'orange'],
-      Thursday: ['purple', 'magenta', 'pink', 'red', 'orange', 'amber'],
-      Friday: ['magenta', 'pink', 'red', 'orange', 'amber', 'yellow'],
-      Saturday: ['sky', 'violet', 'magenta', 'red', 'amber', 'yellow'],
-      Sunday: ['pink', 'magenta', 'purple', 'violet', 'blue', 'sky']
-    };
-    var host = document.getElementById('hero-mesh');
-    if (!host) return;
-    var day = new Intl.DateTimeFormat('en-GB', { weekday: 'long', timeZone: 'Europe/Paris' }).format(new Date());
-    var P = (DAYS[day] || DAYS.Monday).map(function (n) { return HEX[n]; });
-    function layer(rev) {
-      var C = rev ? P.slice().reverse() : P, parts = [];
-      for (var i = 0; i < 16; i++) {
-        var y = 2 + 96 * i / 15;
-        var ci = Math.max(0, Math.min(5, Math.round(y / 100 * 5 + (i % 2 ? 0.6 : -0.6))));
-        var x = i % 2 ? 82 : 18 + (i % 3) * 12;
-        parts.push('radial-gradient(ellipse 62% 7.5% at ' + x + '% ' + y.toFixed(1) + '%, ' + C[ci] + ' 0%, transparent 100%)');
-      }
-      parts.push('linear-gradient(to bottom, ' + C.join(', ') + ')');
-      return parts.join(', ');
-    }
-    var tint = document.createElement('div'); tint.className = 'tint';
-    var a = document.createElement('i'), b = document.createElement('i'); b.className = 'b';
-    a.style.backgroundImage = layer(false); b.style.backgroundImage = layer(true);
-    tint.appendChild(a); tint.appendChild(b); host.appendChild(tint);
-  })();
-</script>
-
 <style>
   .hero {
     position: relative;
     overflow: hidden;
     background: var(--paper);
     color: var(--charcoal);
-  }
-
-  /* Day mesh: 30% strength over paper, text on it is always charcoal. */
-  .mesh {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    background: var(--paper);
-  }
-  .mesh :global(.tint) { position: absolute; inset: 0; opacity: 0.3; }
-  .mesh :global(i) { position: absolute; inset: -6%; display: block; }
-  .mesh :global(.b) { opacity: 0; animation: swap 5s ease-in-out infinite alternate; }
-  @keyframes swap {
-    from { opacity: 0; transform: translateY(0); }
-    to { opacity: 1; transform: translateY(-1.5%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mesh :global(.b) { animation: none; opacity: 0; }
   }
 
   .hero__inner {
