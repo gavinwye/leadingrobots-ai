@@ -1,5 +1,6 @@
 ---
 const BUTTONDOWN_USERNAME = 'gavinwye';
+const PAGE_URL = `https://buttondown.com/${BUTTONDOWN_USERNAME}`;
 const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`;
 ---
 <div class="newsletter-form-wrapper">
@@ -7,8 +8,10 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
     id="newsletter-form"
     action={ACTION_URL}
     method="post"
+    target="popupwindow"
     novalidate
   >
+    <input type="hidden" name="embed" value="1" />
     <label for="email-input" class="sr-only">Email address</label>
     <div class="form-row">
       <input
@@ -21,11 +24,8 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
       />
       <button type="submit">Stay in the loop</button>
     </div>
-    <p id="form-error" class="form-message form-error" aria-live="polite" hidden>
-      Something went wrong. Try again or email me directly.
-    </p>
     <p id="form-success" class="form-message form-success" aria-live="polite" hidden>
-      You're in. I'll be in touch.
+      One more step: confirm in the window that just opened. Then check your email.
     </p>
   </form>
 </div>
@@ -114,48 +114,24 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
     margin-bottom: 0;
   }
 
-  .form-error {
-    color: var(--error);
-  }
-
   .form-success {
     color: var(--charcoal);
   }
 </style>
 
-<script>
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
-  const errorMsg = document.getElementById('form-error') as HTMLElement;
-  const successMsg = document.getElementById('form-success') as HTMLElement;
-  const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+<script define:vars={{ pageUrl: PAGE_URL }}>
+  // Buttondown checks the visitor is human, so it has to be a real form post into
+  // its own window. A background fetch gets the challenge page and a 400.
+  const form = document.getElementById('newsletter-form');
+  const successMsg = document.getElementById('form-success');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorMsg.hidden = true;
-    successMsg.hidden = true;
-    submitBtn.disabled = true;
-
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
-    const data = new URLSearchParams();
-    data.set('email', email);
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: data.toString(),
-      });
-
-      if (response.ok || response.status === 201) {
-        successMsg.hidden = false;
-        form.reset();
-      } else {
-        errorMsg.hidden = false;
-      }
-    } catch {
-      errorMsg.hidden = false;
-    } finally {
-      submitBtn.disabled = false;
+  form.addEventListener('submit', (e) => {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      form.reportValidity();
+      return;
     }
+    window.open(pageUrl, 'popupwindow', 'scrollbars=yes,width=800,height=600');
+    successMsg.hidden = false;
   });
 </script>
