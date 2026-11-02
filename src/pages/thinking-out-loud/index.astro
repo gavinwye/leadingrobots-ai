@@ -13,14 +13,14 @@ const posts = allPosts.sort(
 ---
 <BaseLayout
   title="Thinking Out Loud"
-  description="Notes from writing Leading Robots: The AI Organisation — ideas, half-formed thinking, and things worth working through in public."
+  description="Notes from writing Leading Robots: The AI Organisation: ideas, half-formed thinking, and things worth working through in public."
 >
   <div class="writing-index">
     <header class="writing-index__header">
       <a href="/" class="writing-index__back">&larr; Home</a>
       <h1>Thinking Out Loud</h1>
       <p>
-        Notes from writing <em>Leading Robots: The AI Organisation</em> &mdash; ideas,
+        Notes from writing <em>Leading Robots: The AI Organisation</em>: ideas,
         half-formed thinking, and things worth working through in public.
       </p>
     </header>
@@ -44,56 +44,45 @@ const posts = allPosts.sort(
 
 <style>
   .writing-index {
-    max-width: var(--reading-width);
+    max-width: calc(var(--reading-width) + 2 * var(--gutter));
     margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+    padding: clamp(2.5rem, 6vw, 5rem) var(--gutter);
   }
 
   .writing-index__header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+    border-bottom: 2px solid var(--charcoal);
   }
 
   .writing-index__back {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    color: var(--rust);
-    text-decoration: none;
+    font: 700 1.1rem/1 var(--font-head);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 1.75rem;
   }
 
-  .writing-index__back:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-
   .writing-index__header h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2.8rem, 9vw, 5rem);
     margin-bottom: 1rem;
-    line-height: 1.1;
+    line-height: 1.02;
   }
 
   .writing-index__header p {
-    color: var(--mid-grey);
-    font-size: 1rem;
+    color: var(--body-grey);
+    font-size: 1.2rem;
     margin: 0;
     max-width: 48ch;
-    line-height: 1.65;
   }
 
   .writing-index__posts {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 20px;
   }
 
   .writing-index__empty {
-    color: var(--mid-grey);
-    font-style: italic;
+    color: var(--body-grey);
   }
 </style>

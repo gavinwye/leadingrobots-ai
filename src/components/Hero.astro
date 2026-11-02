@@ -2,114 +2,126 @@
 import NewsletterForm from './NewsletterForm.astro';
 ---
 <section class="hero">
+  <div class="hero__inner">
   <div class="hero__left">
     <div class="hero__left-content">
-      <p class="hero__eyebrow">Forthcoming book</p>
+      <p class="hero__eyebrow eyebrow">Forthcoming book</p>
       <h1 class="hero__title">Leading<br />Robots</h1>
       <p class="hero__subtitle-book">The AI Organisation</p>
       <p class="hero__description">
-        Your job is going to change. This is a guide for thinking through what that means — for you, your skills, and the people you work with.
+        Your job is going to change. This is a guide for thinking through what that means for you, your skills, and the people you work with.
       </p>
       <NewsletterForm />
     </div>
   </div>
   <div class="hero__right">
-    <img
-      src="/images/book-cover-placeholder.svg"
-      alt="Leading Robots: The AI Organisation — book cover placeholder"
-      class="hero__cover"
-      width="300"
-      height="450"
-    />
+    <div class="cover" role="img" aria-label="Book cover: Leading Robots, The AI Organisation (placeholder)">
+      <p class="cover__title">Leading<br />Robots</p>
+      <p class="cover__sub">The AI Organisation</p>
+      <p class="cover__blurb">This is a guide for thinking through what that means for you, your skills, and the people you work with.</p>
+      <div class="cover__gap"></div>
+      <p class="cover__author">Gavin Wye</p>
+    </div>
+  </div>
   </div>
 </section>
 
 <style>
   .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--charcoal);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 6rem) var(--gutter);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 60vh;
-  }
-
-  .hero__left {
-    background: var(--charcoal);
-    color: var(--white);
-    display: flex;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
     align-items: center;
-    padding: clamp(2rem, 5vw, 4rem);
-  }
-
-  .hero__left-content {
-    max-width: 480px;
-    width: 100%;
   }
 
   .hero__eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mid-grey);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .hero__title {
-    font-family: var(--font-serif);
-    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    line-height: 1.02;
     margin-bottom: 0.5rem;
-    color: var(--white);
-    line-height: 1;
-    letter-spacing: -0.02em;
   }
 
   .hero__subtitle-book {
-    font-family: var(--font-serif);
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    color: var(--rust);
-    font-style: italic;
-    margin-bottom: 2rem;
-    letter-spacing: 0.02em;
+    font: 700 clamp(1.6rem, 4vw, 2.6rem)/1.05 var(--font-head);
+    color: var(--accent-text);
+    margin-bottom: 1.5rem;
   }
 
   .hero__description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    line-height: 1.35;
+    color: var(--body-grey);
+    max-width: 36ch;
     margin-bottom: 0;
-    max-width: 40ch;
   }
 
   .hero__right {
-    background: var(--white);
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 2.5rem 3rem;
   }
 
-  .hero__cover {
-    max-height: 50vh;
-    width: auto;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+  .cover {
+    width: min(100%, 300px);
+    aspect-ratio: 2 / 3;
+    background: var(--accent);
+    border-radius: 4px;
+    box-shadow: inset 8px 0 0 rgba(0, 0, 0, 0.12), 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 36px 28px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--ink);
   }
 
-  @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: unset;
-    }
+  .cover__title {
+    font: 700 3.4rem/1 var(--font-head);
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
 
-    .hero__left {
-      padding: 3rem 1.75rem 2.5rem;
-    }
+  .cover__sub {
+    font: 700 1.5rem/1.05 var(--font-head);
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
 
-    .hero__right {
-      padding: 2.5rem 2rem;
-      min-height: 55vw;
-    }
+  .cover__blurb {
+    font: 400 1rem/1.35 var(--font-body);
+    color: var(--ink);
+    margin: 0;
+  }
 
-    .hero__cover {
-      max-height: 45vw;
+  .cover__gap {
+    flex: 1;
+  }
+
+  .cover__author {
+    font: 600 1rem/1 var(--font-body);
+    color: var(--ink);
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .hero__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cover {
+      width: min(100%, 240px);
     }
   }
 </style>

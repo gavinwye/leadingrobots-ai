@@ -22,7 +22,7 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
       <button type="submit">Stay in the loop</button>
     </div>
     <p id="form-error" class="form-message form-error" aria-live="polite" hidden>
-      Something went wrong — try again or email me directly.
+      Something went wrong. Try again or email me directly.
     </p>
     <p id="form-success" class="form-message form-success" aria-live="polite" hidden>
       You're in. I'll be in touch.
@@ -33,6 +33,7 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
 <style>
   .newsletter-form-wrapper {
     margin-top: 2rem;
+    max-width: 32rem;
   }
 
   .sr-only {
@@ -49,65 +50,76 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
 
   .form-row {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
   }
 
   input[type="email"] {
-    flex: 1 1 200px;
-    padding: 0.7rem 1rem;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
+    flex: 1 1 14rem;
+    min-height: 52px;
+    padding: 12px 14px;
+    border: 2px solid var(--charcoal);
+    border-radius: 4px;
+    background: var(--white);
+    color: var(--charcoal);
     font-family: var(--font-body);
-    font-size: 1rem;
-    border-radius: 2px;
-    outline: none;
-    transition: border-color 0.2s;
+    font-size: 1.1rem;
   }
 
   input[type="email"]::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: #6b6a68;
   }
 
   input[type="email"]:focus {
-    border-color: rgba(255, 255, 255, 0.6);
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink);
   }
 
   button[type="submit"] {
-    padding: 0.7rem 1.4rem;
-    background: var(--rust);
-    color: var(--white);
-    border: none;
-    font-family: var(--font-body);
-    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 32px;
+    background: var(--accent);
+    color: var(--on-accent);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    font: 700 1.2rem/1 var(--font-head);
     cursor: pointer;
-    border-radius: 2px;
-    transition: opacity 0.2s;
+    transition: background-color 0.15s;
     white-space: nowrap;
   }
 
   button[type="submit"]:hover {
-    opacity: 0.85;
+    background: color-mix(in srgb, var(--accent-text) 85%, #000);
+    color: #fff;
+  }
+
+  button[type="submit"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--ink);
   }
 
   button[type="submit"]:disabled {
-    opacity: 0.6;
+    background: #e6e4df;
+    color: #6b6a68;
     cursor: not-allowed;
   }
 
   .form-message {
     margin-top: 0.75rem;
     font-size: 0.9rem;
+    font-weight: 500;
     margin-bottom: 0;
   }
 
   .form-error {
-    color: #ff9580;
+    color: var(--error);
   }
 
   .form-success {
-    color: #a8e6b0;
+    color: var(--charcoal);
   }
 </style>
 

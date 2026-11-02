@@ -3,7 +3,7 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p><em>Leading Robots: The AI Organisation</em> &mdash; &copy; {year}</p>
+    <p><em>Leading Robots: The AI Organisation</em> &copy; {year}</p>
     <nav aria-label="Footer navigation">
       <a href="/thinking-out-loud">Thinking Out Loud</a>
     </nav>
@@ -12,11 +12,11 @@ const year = new Date().getFullYear();
 
 <style>
   .site-footer {
-    background: var(--charcoal);
-    color: rgba(255, 255, 255, 0.4);
-    padding: 2rem clamp(1.75rem, 5vw, 4rem);
-    font-size: 0.85rem;
-    font-family: var(--font-body);
+    background: var(--accent);
+    color: var(--ink);
+    padding: 2rem var(--gutter);
+    font-size: 1rem;
+    margin-top: auto;
   }
 
   .site-footer__inner {
@@ -34,16 +34,16 @@ const year = new Date().getFullYear();
   }
 
   .site-footer a {
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
+    color: var(--ink);
+    font: 700 1.1rem/1 var(--font-head);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: color 0.2s;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
   }
 
   .site-footer a:hover {
-    color: var(--white);
+    color: var(--charcoal);
   }
 </style>
