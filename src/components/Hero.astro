@@ -16,10 +16,10 @@ import NewsletterForm from './NewsletterForm.astro';
   </div>
   <div class="hero__right">
     <div class="cover" role="img" aria-label="Book cover: Leading Robots, The AI Organisation (placeholder)">
-      <div class="cover__bar"></div>
-      <div class="cover__gap"></div>
       <p class="cover__title">Leading<br />Robots</p>
       <p class="cover__sub">The AI Organisation</p>
+      <p class="cover__blurb">This is a guide for thinking through what that means for you, your skills, and the people you work with.</p>
+      <div class="cover__gap"></div>
       <p class="cover__author">Gavin Wye</p>
     </div>
   </div>
@@ -78,42 +78,41 @@ import NewsletterForm from './NewsletterForm.astro';
   .cover {
     width: min(100%, 300px);
     aspect-ratio: 2 / 3;
-    background: var(--paper);
-    border: 1px solid var(--line);
+    background: var(--accent);
     border-radius: 4px;
-    box-shadow: inset 8px 0 0 rgba(0, 0, 0, 0.06), 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
-    padding: 0 28px 28px 36px;
+    box-shadow: inset 8px 0 0 rgba(0, 0, 0, 0.12), 0 24px 64px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 36px 28px 28px 36px;
     display: flex;
     flex-direction: column;
-    position: relative;
     overflow: hidden;
-    color: var(--charcoal);
+    color: var(--ink);
   }
 
-  .cover__bar {
-    height: 8px;
-    background: var(--accent);
-    margin: 0 -28px 28px -36px;
+  .cover__title {
+    font: 700 3.4rem/1 var(--font-head);
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .cover__sub {
+    font: 700 1.5rem/1.05 var(--font-head);
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  .cover__blurb {
+    font: 400 1rem/1.35 var(--font-body);
+    color: var(--ink);
+    margin: 0;
   }
 
   .cover__gap {
     flex: 1;
   }
 
-  .cover__title {
-    font: 700 3.4rem/1 var(--font-head);
-    margin-bottom: 0.6rem;
-  }
-
-  .cover__sub {
-    font: 700 1.5rem/1.05 var(--font-head);
-    color: var(--accent-text);
-    margin-bottom: 2.2rem;
-  }
-
   .cover__author {
-    font: 500 1rem/1 var(--font-body);
-    color: var(--body-grey);
+    font: 600 1rem/1 var(--font-body);
+    color: var(--ink);
     margin: 0;
   }
 
