@@ -1,17 +1,14 @@
 ---
 const cards = [
   {
-    label: '01',
     heading: 'The editorial problem',
     body: 'When AI does the work, humans become reviewers. Most organisations aren\'t designed for that shift.',
   },
   {
-    label: '02',
     heading: 'The apprenticeship gap',
     body: 'Junior roles are disappearing. How do people develop expertise when AI handles execution?',
   },
   {
-    label: '03',
     heading: 'The accountability question',
     body: 'Democratic legitimacy depends on humans being responsible for decisions. AI makes that harder to maintain.',
   },
@@ -21,7 +18,6 @@ const cards = [
   <div class="tensions__grid">
     {cards.map(card => (
       <article class="tension-card">
-        <span class="tension-card__label">{card.label}</span>
         <h2 class="tension-card__heading">{card.heading}</h2>
         <p class="tension-card__body">{card.body}</p>
       </article>
@@ -49,14 +45,6 @@ const cards = [
     border-radius: 4px;
     padding: 28px;
     min-width: 0;
-  }
-
-  .tension-card__label {
-    font: 700 1.1rem/1 var(--font-head);
-    letter-spacing: 0.12em;
-    color: var(--accent-text);
-    display: block;
-    margin-bottom: 1rem;
   }
 
   .tension-card__heading {
