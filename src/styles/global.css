@@ -9,10 +9,10 @@
   --white: #ffffff;
   --error: #b3001b;
 
-  /* One accent per page. Blue: white on the fill, and the same blue works as text on white (6.6:1). */
-  --accent: #2e3bff;
-  --on-accent: #ffffff;
-  --accent-text: #2e3bff;
+  /* One accent per page. Sky: ink on the bright fill, the darkened blue for text on white (4.5:1). */
+  --accent: #00a8ff;
+  --on-accent: #1a1a1a;
+  --accent-text: #007cbd;
 
   --font-head: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif;
   --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
