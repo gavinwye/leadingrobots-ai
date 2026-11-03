@@ -107,6 +107,18 @@ const ACTION_URL = `https://buttondown.email/api/emails/embed-subscribe/${BUTTON
     cursor: not-allowed;
   }
 
+  @media (max-width: 520px) {
+    .form-row {
+      flex-direction: column;
+    }
+    input[type="email"],
+    button[type="submit"] {
+      width: 100%;
+      flex: none;
+      justify-content: center;
+    }
+  }
+
   .form-message {
     margin-top: 0.75rem;
     font-size: 0.9rem;
