@@ -7,7 +7,6 @@ import NewsletterForm from './NewsletterForm.astro';
     <div class="hero__left-content">
       <p class="hero__eyebrow eyebrow">Forthcoming book</p>
       <h1 class="hero__title">Leading<br />Robots</h1>
-      <p class="hero__subtitle-book">The AI Organisation</p>
       <p class="hero__description">
         Your job is going to change. This is a guide for thinking through what that means for you, your skills, and the people you work with.
       </p>
@@ -15,10 +14,9 @@ import NewsletterForm from './NewsletterForm.astro';
     </div>
   </div>
   <div class="hero__right">
-    <div class="cover" role="img" aria-label="Book cover: Leading Robots, The AI Organisation (placeholder)">
+    <div class="cover" role="img" aria-label="Book cover: Leading Robots (placeholder)">
       <div class="cover__in">
       <p class="cover__title">Leading<br />Robots</p>
-      <p class="cover__sub">The AI Organisation</p>
       <p class="cover__blurb">This is a guide for thinking through what that means for you, your skills, and the people you work with.</p>
       <div class="cover__gap"></div>
       <p class="cover__author">Gavin Wye</p>
@@ -55,14 +53,9 @@ import NewsletterForm from './NewsletterForm.astro';
   .hero__title {
     font-size: clamp(2.8rem, 9vw, 7rem);
     line-height: 1.02;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero__subtitle-book {
-    font: 700 clamp(1.6rem, 4vw, 2.6rem)/1.05 var(--font-head);
-    color: var(--accent-text);
     margin-bottom: 1.5rem;
   }
+
 
   .hero__description {
     font-size: clamp(1.1rem, 2.4vw, 1.5rem);
@@ -98,14 +91,9 @@ import NewsletterForm from './NewsletterForm.astro';
   .cover__title {
     font: 700 18cqw/1 var(--font-head);
     color: var(--white);
-    margin-bottom: 3cqw;
+    margin-bottom: 8cqw;
   }
 
-  .cover__sub {
-    font: 700 7.5cqw/1.05 var(--font-head);
-    color: var(--ink);
-    margin-bottom: 6cqw;
-  }
 
   .cover__blurb {
     font: 400 5.6cqw/1.35 var(--font-body);
